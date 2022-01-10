@@ -645,9 +645,12 @@ function on_serial_line(line) {
     let isOK = line.indexOf("ok") === 0;
 
     // parse M105/M155 temperature updates
+    
     let tpos = Math.max(line.indexOf("T:"), line.indexOf("T0:"));
     let bpos = line.indexOf("B:");
-    if ((tpos >= 0 && tpos < 6) || (bpos >= 0 && bpos <= 6)) {
+    
+    //if ((tpos >= 0 && tpos < 6) || (bpos >= 0 && bpos <= 6)) {
+    if (tpos >= 0 || bpos >= 0) { //not sure why tpos and bpos needed to be <6  on flyingbearghost the positions are 17 and 31
         last_temp = Date.now();
         let tempfix = line.indexOf('TT:') >= 0;
         line = line

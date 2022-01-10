@@ -9,6 +9,11 @@
         "type": "git",
         "url": "https://github.com/stewartoallen/grid-bot.git"
     },
+    "scripts": {
+        "start": "NODE_TLS_REJECT_UNAUTHORIZED='0' node src/js/server.js --stdin --debug=on --baud=115200 --buflen=7 --filedir=/home/pi/grid-bot/uploads",
+        "start-pool": "NODE_TLS_REJECT_UNAUTHORIZED='0' node src/js/server.js --stdin --debug=on --baud=115200 --grid=http://amma2.local:8111 --filedir=/home/pi/grid-bot/uploads",
+        "start-server": "sudo nohup nice -n -20 su -l -c node src/js/server.js --baud=115200 --filedir=/home/pi/grid-bot/uploads pi > tmp/gridbot.log &"
+    },
     "keywords": [
         "grid.space",
         "kiri:moto",
